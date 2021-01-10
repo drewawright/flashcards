@@ -67,6 +67,10 @@ export class AppComponent {
       this.flashForm.reset();
     }
 
+    handleShuffle(): void {
+      this.flashService.shuffleFlashs();
+    }
+
     generateId(): number {
       return getRandomNumber();
     }
