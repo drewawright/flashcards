@@ -6,8 +6,15 @@
 form {
   margin: 10px;
   width: 300px;
+  border: 1px solid black;
 }
 
 .clear-btn {
   margin-left: 10px;
+}
+
+.columns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

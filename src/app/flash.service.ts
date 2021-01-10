@@ -99,4 +99,31 @@ export class FlashService {
   getIndex(id: number): number {
     return this.flashs.findIndex(flash => flash.id === id);
   }
+
+  shuffleFlashs(): void {
+    this.shuffle(this.flashs);
+    this.flashs$.next(this.flashs);
+  }
+
+  // Fischer-Yates Shuffle Algorithm implementation from
+  // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+  private shuffle(array: IFlash[]): IFlash[] {
+    // tslint:disable-next-line: one-variable-per-declaration
+    let currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+      // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+
+      // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+  }
 }
