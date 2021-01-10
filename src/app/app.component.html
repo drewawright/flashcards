@@ -6,39 +6,33 @@
               (onEdit)="handleEdit($event)"
               (onRememberedChange)="handleRememberedChange($event)"></app-flash>
 </div>
-<div class="columns">
-  <div class="column">
-    <form #flashForm="ngForm">
-      <h1 *ngIf="!editing; else updateHeader" class="is-size-3">Add New Flash Card</h1>
-      <ng-template #updateHeader>
-        <h1 class="is-size-3">Update Flash Card</h1>
-      </ng-template>
-      <div class="field">
-        <label for="" class="label">Question</label>
-        <div class="control">
-          <input required type="text" class="input" name="question"
-          [(ngModel)]="flash.question" #question="ngModel" [ngClass]="{'is-danger': question.invalid && !question.pristine}">
-        </div>
-      </div>
-      <div class="field">
-        <label for="" class="label">Answer</label>
-        <div class="control">
-          <input required type="text" class="input" name="answer"
-          [(ngModel)]="flash.answer" #answer="ngModel" [ngClass]="{'is-danger': answer.invalid && !answer.pristine}">
-        </div>
-      </div>
-      <button *ngIf="editing; else submitBtn" class="button is-primary" type="submit"
-      (click)="handleUpdate()" [disabled]="flashForm.invalid">Update</button>
-      <ng-template #submitBtn>
-        <button class="button is-primary" type="submit" (click)="handleSubmit()" [disabled]="flashForm.invalid">Submit</button>
-      </ng-template>
-      <button *ngIf="editing; else clearBtn" class="button clear-btn" (click)="handleCancel()">Cancel</button>
-      <ng-template #clearBtn>
-        <button class="button clear-btn" (click)="handleClear()">Clear</button>
-      </ng-template>
-    </form>
+
+<form #flashForm="ngForm">
+  <h1 *ngIf="!editing; else updateHeader" class="is-size-3">Add New Flash Card</h1>
+  <ng-template #updateHeader>
+    <h1 class="is-size-3">Update Flash Card</h1>
+  </ng-template>
+  <div class="field">
+    <label for="" class="label">Question</label>
+    <div class="control">
+      <input required type="text" class="input" name="question"
+        [(ngModel)]="flash.question" #question="ngModel" [ngClass]="{'is-danger': question.invalid && !question.pristine}">
+    </div>
   </div>
-  <div class="column">
-    <button class="button is-link" (click)="handleShuffle()">Shuffle</button>
+  <div class="field">
+    <label for="" class="label">Answer</label>
+    <div class="control">
+      <input required type="text" class="input" name="answer"
+        [(ngModel)]="flash.answer" #answer="ngModel" [ngClass]="{'is-danger': answer.invalid && !answer.pristine}">
+    </div>
   </div>
-</div>
+  <button *ngIf="editing; else submitBtn" class="button is-primary" type="submit"
+    (click)="handleUpdate()" [disabled]="flashForm.invalid">Update</button>
+  <ng-template #submitBtn>
+    <button class="button is-primary" type="submit" (click)="handleSubmit()" [disabled]="flashForm.invalid">Submit</button>
+  </ng-template>
+  <button *ngIf="editing; else clearBtn" class="button clear-btn" (click)="handleCancel()">Cancel</button>
+  <ng-template #clearBtn>
+    <button class="button clear-btn" (click)="handleClear()">Clear</button>
+  </ng-template>
+</form>
